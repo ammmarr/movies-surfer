@@ -1,0 +1,304 @@
+.link-container{
+    min-width: 24%;
+    height: 400px;
+    list-style: none;
+    text-decoration: none;
+}
+.movie-search-component {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(79, 14, 14);
+    margin: 0px;
+    position: relative;
+    overflow: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    text-align:center;
+    margin:auto;
+    padding:0;
+    img{
+        position: fixed;
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+        left: 0;
+        top: 0;
+    }
+    .content{
+        margin-top: 50vh;
+        z-index:    1;
+        background: black;
+        height: fit-content;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &::after{
+        content: "";
+        position: absolute;
+        top: -40vh;
+        left: 0;
+        width: 100%;
+        height: 40vh;
+        background: linear-gradient(to top, black,transparent);
+        &::-webkit-scrollbar{
+            z-index: 200;
+        }
+        }
+        h1{
+            margin: 5vh 0px;
+        }
+        form{
+            width: 50%;
+            height: 5vh;
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            input{
+                height: 100%;
+                width: 80%;
+              
+            }
+            button{
+                width: 15%;
+                height: 100%;
+                cursor: pointer;
+         
+            }
+           
+        }
+        .movies-search-error{
+            width: 100%;
+            height: 29.8vh;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            h2{
+                font-weight: 200;
+                color: #fa4753;
+            }
+        }
+       
+    }
+    .movies-search-ui {
+        margin-top: 10vh;
+        width: 100%;
+        background:linear-gradient(180deg,black,rgb(23, 0, 4));
+        height: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: auto;
+        row-gap: 1vh;
+        gap: 10px;
+      
+        .movie-card-big{
+            width: 100%;
+            height:100%;
+            cursor: pointer;
+            background-color: rgb(8, 11, 11)  ;
+            position: relative;
+            overflow: hidden;
+            transition: all ease-out 0.3s;
+            &::before{
+                content: "POSTER NOT AVAILABLE";
+                color: rgb(126, 22, 22);
+                font-weight: 400;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transition: all ease-out 0.3s;
+                left: 0;
+                top: 0;
+                object-fit: cover;
+            }
+            h2,
+            p {
+                color: rgba(255, 255, 255, 0.73);
+                position: absolute;
+                bottom: 5%;
+                z-index: 100;
+                opacity: 0;
+                transform: translateY(50px);
+                transition: all ease 0.3s;
+                animation-delay: 0.1s;
+                font-weight: 300;
+                font-size: 20%;
+            }
+    
+            h2 {
+    
+                left: 5%;
+                margin: 0;
+    
+            }
+    
+            p {
+                right: 5%
+            }
+            
+        }
+        .backdrop-info {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(to top, black, rgba(0, 0, 0, 0.646), transparent);
+            transition: all ease-in 0.3s;
+    
+            left: 0;
+            opacity: 0;
+        }
+    }
+
+}
+.movie-card-big:after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to top, black, transparent);
+    transition: all ease-in-out 0.2s;
+
+}
+
+.movie-card-big:hover {
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+    img {
+        transform: scale(1.1);
+    }
+
+    .backdrop-info {
+        opacity: 1;
+
+        h2,
+        p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+}
+// cstum input 
+.input {
+    max-width: 70%;
+    height: 100%;
+    border: 2px solid transparent;
+    outline: none;
+    border-bottom: 2px solid #3f3f3f;
+    caret-color: #3f3f3f;
+    background-color: #212121;
+    padding: 5px;
+    transition: .5s linear;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  
+  .input:focus {
+    border: 2px solid #fa4753;
+    caret-color: #fa4753;
+    color: #fa4753;
+    box-shadow: 4px 4px 10px #070707;
+  }
+  
+  .input:focus::placeholder {
+    color: #fa4753;
+  }
+  .costum-button {
+    border-radius: .25rem;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #fff;
+    -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+    clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+    height: 40px;
+    font-size: 0.7rem;
+    line-height: 14px;
+    letter-spacing: 1.2px;
+    transition: .2s .1s;
+    background-image: linear-gradient(90deg,#1c1c1c,#6b4040);
+    border: 0 solid;
+    overflow: hidden;
+  }
+  
+  .costum-button:hover {
+    cursor: pointer;
+    transition: all .3s ease-in;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  @media screen and (max-width: 863px){
+    .link-container{
+        width: 47%;
+    }
+    #search-button{
+        width: fit-content;
+        margin: 0px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .content form{
+        width: 90% !important;
+    }
+    .movie-card-big {
+
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    
+    
+        .backdrop-info {
+            opacity: 1 !important;
+            z-index: 100 !important;
+    
+            h2,
+            p {
+                font-weight: 700 !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        }
+    
+    }
+  }
+  .movie-search-component::-webkit-scrollbar {
+    width: 0.7vw;
+    background-color: rgb(88, 87, 87);
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+   .movie-search-component::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg,rgb(102, 43, 43),rgb(62, 37, 58),rgb(61, 25, 25));
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+ 
+   
+   }
+   .movie-search-component::-webkit-scrollbar-thumb:hover{
+transform: scale(1.1);
+
+   }
+   .movie-search-component::-webkit-scrollbar-track {
+ background-color: transparent;
+
+  }

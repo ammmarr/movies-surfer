@@ -1,0 +1,26 @@
+.cards-track {
+    width: 100%;
+    flex: 0 0 auto;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    background-color: rgba(178, 206, 206, 0);
+    box-sizing: border-box;
+    margin: 0px;
+    padding:  0px 2vw;
+    
+    margin-bottom: 10vh;
+
+}
+
+.cards-track::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .cards-track {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+ 

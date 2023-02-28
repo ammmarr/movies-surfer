@@ -1,0 +1,9 @@
+body,html,::before,::after,*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    --swiper-theme-color: #fff
+}
+iframe { height: 100vh;
+width:100% }

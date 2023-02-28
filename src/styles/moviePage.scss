@@ -1,0 +1,247 @@
+.hero-movie-ui {
+    background-color: rgb(72, 72, 72);
+    width: 100%;
+    height: fit-content;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: auto;
+
+    overflow: hidden;
+
+
+    .movie-content {
+        margin-top: 20%;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        background: linear-gradient(to top, black, rgba(0, 0, 0, 0.76), transparent);
+        align-items: center;
+        justify-content: center;
+        column-gap: 1%;
+        padding: 0px 2%;
+
+
+        .poster-image {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .text {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            h1 {
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+            .overview-container{
+                width: 100%;
+                height: 20%;
+                text-align: justify;
+                display: flex;
+                overflow-wrap: break-word;
+                p {
+                    
+                    font-weight: 500;
+                    font-size: 100%;
+                    color: rgba(255, 255, 255, 0.652);
+                }
+            }
+
+          
+
+            .genres-container {
+                width: fit-content;
+                display: flex;
+                height: 10%;
+                justify-content: space-between;
+                align-items: center;
+
+            }
+
+            .genre {
+                width: fit-content;
+                height: fit-content;
+                padding: 10px;
+                margin: 0px 20px 0 0;
+                background: rgba(97, 73, 73, 0.543);
+                backdrop-filter: blur(4px);
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                transition: all ease-out 0.3s;
+
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            }
+
+            .genre:hover {
+                transform: scale(1.1);
+            }
+
+            .action-buttons {
+                display: flex;
+                width: 70%;
+                height: 100px;
+                align-items: center;
+
+
+
+            }
+
+
+            .love {
+                color: rgb(142, 5, 5);
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+                cursor: pointer;
+                margin: 0px 20% 0px 0px;
+
+                .fav-icon {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+
+            button {
+                width: 200px;
+
+                background-color: rgba(255, 255, 255, 0.128);
+                backdrop-filter: blur(5px);
+                border-radius: 10px;
+                padding: 10px;
+                color: white;
+                font-weight: 100;
+
+                cursor: pointer;
+                transition: all ease-out 0.3s;
+                border: 1px solid wheat
+            }
+
+            button:hover {
+                transform: scale(1.1);
+                background-color: rgba(244, 38, 38, 0.576);
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+            }
+
+            .cast-section {
+                display: flex;
+                flex-direction: column;
+                height: fit-content;
+                width: 100%;
+                display: inline-block;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+
+                /* Firefox */
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                h2 {
+                    font-weight: 100;
+                    margin: 10px 0px;
+                }
+
+            }
+
+            .cast-container {
+                width: fit-content;
+                height: 100%;
+                overflow: hidden;
+                display: flex;
+            }
+        }
+    }
+
+    .trailer-section {
+        padding: 0px 2%;
+
+        background-color: black;
+        margin: 0px;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .trailer-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        h2 {
+            margin: 3% 0px;
+            font-size: 2em;
+            font-weight: 300;
+            letter-spacing: 5px;
+        }
+    }
+
+    .recommended-movies {
+        border: black 1px solid;
+        padding: 0px 2%;
+
+        background-color: black;
+        height: fit-content;
+
+        .cards-track {
+            margin: 0px;
+            padding: 0px 2vw;
+
+        }
+
+        h1 {
+            margin: 15vh 0 5vh 2vw;
+            font-weight: 400;
+        }
+    }
+
+
+}
+
+@media (max-width:992px) {
+    .movie-content {
+        flex-direction: column;
+
+        .text {
+            width: 100% !important;
+            justify-content: end !important;
+
+        }
+
+        .poster-image {
+            display: none;
+
+        }
+    }
+}

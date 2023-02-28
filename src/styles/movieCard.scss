@@ -1,0 +1,129 @@
+.movie-card {
+    width: 200px;
+    display: inline-block;
+    flex: 0 0 auto;
+    cursor: pointer;
+    position: relative;
+    height: 100%;
+    background-color: rgb(77, 31, 31);
+    margin-right: 10px;
+    color: black;
+    border-radius: 5px;
+    transition: all ease-out 0.3s;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transition: all ease-out 0.3s;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+
+    }
+
+    .backdrop-info {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(to top, black, rgba(0, 0, 0, 0.646), transparent);
+        transition: all ease-in 0.3s;
+
+        left: 0;
+        opacity: 0;
+
+        h2,
+        .rating-container {
+            color: rgba(255, 255, 255, 0.73);
+            position: absolute;
+            bottom: 10%;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all ease 0.3s;
+            animation-delay: 0.1s;
+            font-weight: 300;
+            font-size: 20%;
+
+
+        }
+
+        h2 {
+
+            left:3%;
+            margin: 0;
+
+        }
+        .rating-container{
+            position: absolute;
+            z-index: 3000;
+            color: rgb(147, 3, 3);
+            width: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            right: 3%;
+            bottom: 8%;
+            p{
+                position: absolute;
+                font-size: 5px;
+
+            }
+        }
+
+     
+    }
+
+
+
+}
+
+
+.movie-card:after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to top, black, transparent);
+    transition: all ease-out 0.2s;
+
+}
+
+.movie-card:hover {
+    transform: scale(1.04);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+    img {
+        transform: scale(1.1);
+    }
+
+    .backdrop-info {
+        opacity: 1;
+
+        h2,
+        .rating-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+}
+@media screen and (max-width:978px){
+   
+        .backdrop-info {
+            opacity: 1 !important;
+            display: block ;
+            h2,
+            .rating-container {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        }
+    
+    
+}
