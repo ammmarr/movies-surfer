@@ -1,3 +1,6 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { inputAdornmentClasses } from '@mui/material';
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';

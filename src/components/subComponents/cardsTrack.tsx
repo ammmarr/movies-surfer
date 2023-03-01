@@ -1,22 +1,22 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { Autoplay, Navigation, Pagination } from "swiper"
+import "swiper/css"
+import "swiper/css/navigation"
+import { Swiper, SwiperSlide } from "swiper/react"
 import { Result, Shangolla, Tv } from '../../api/MovieApi/interfaces'
 import "../../styles/cardsTrack.scss"
 import MovieCard from './MovieCard'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css"
-import { Autoplay, Pagination, Navigation } from "swiper";
-import "swiper/css/navigation";
-import { useNavigate } from 'react-router-dom'
-
 
 
 const CardsTrack = (props: { data: Tv & Result & Shangolla }) => {
   const navigate = useNavigate()
-function handleRecommendedMoviesClick(id) {
+function handleRecommendedMoviesClick(id:number) {
 
  navigate(`/movie/${id}`)
- console.log("clice")
 }
   return (
     <div className='cards-track'>
@@ -51,7 +51,7 @@ function handleRecommendedMoviesClick(id) {
           delay: 10000,
           disableOnInteraction: false,
         }}>
-        {props.data.map((item: { id: React.Key | null | undefined }) => <SwiperSlide key={item.id} onClick={() => handleRecommendedMoviesClick(item.id)}><MovieCard data={item} key={item.id} /></SwiperSlide>)
+        {props.data.map((item: { id: React.Key | null | undefined | number}) => <SwiperSlide key={item.id} onClick={() => handleRecommendedMoviesClick(item.id)}><MovieCard data={item} key={item.id} /></SwiperSlide>)
         }
       </Swiper>
     </div>

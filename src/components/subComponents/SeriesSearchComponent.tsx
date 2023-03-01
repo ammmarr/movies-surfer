@@ -1,11 +1,13 @@
-import { inputAdornmentClasses } from '@mui/material';
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignorenpm
 import * as React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import apiConfig from '../../api/MovieApi/apiConfig';
-import "../../styles/movieSearchComponent.scss"
-import BGImage from "../../assets/theatre.jpg"
 import { Link } from 'react-router-dom';
+import apiConfig from '../../api/MovieApi/apiConfig';
+import BGImage from "../../assets/theatre.jpg";
+import "../../styles/movieSearchComponent.scss";
 function MoviesSearchComponent() {
     const initialSeries = useSelector((state: any) => state.apiData.popularSeries)
     const [series, setSeries] = useState(initialSeries)

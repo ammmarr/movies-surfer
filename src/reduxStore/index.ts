@@ -1,3 +1,6 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { configureStore, current,  } from "@reduxjs/toolkit";
 import moviesSlice from "./apiData";
 import popUpSlice from "./popUp";

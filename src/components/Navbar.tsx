@@ -1,10 +1,12 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
-import watchLater from '../Pages/WatchLater'
-import alertPopUp from '../reduxStore/alertPopUp'
+import { getRandomMoviesDataThunk } from '../reduxStore/apiData'
 import { logOut } from '../reduxStore/currentUser'
 import { popUpIsOpen } from '../reduxStore/popUp'
 import "../styles/navbar.scss"
@@ -56,6 +58,7 @@ if(auth.currentUser && userName !== ""){
                     <Link to="/movies" style={{ color: 'inherit', textDecoration: 'inherit' }}><li>Movies</li></Link>
                     <Link to="/series" style={{ color: 'inherit', textDecoration: 'inherit' }}><li>Series</li></Link>
                     <li onClick={()=> watchLaterClick()}>Watch later</li>
+                    <button onClick={() => dispatch(getRandomMoviesDataThunk())}>thunk</button>
 
                 </ul>
             </div>

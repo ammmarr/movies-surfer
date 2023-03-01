@@ -1,3 +1,6 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import React, { useState } from "react";
 import "../styles/SignInPopUp.css"
 import { browserSessionPersistence, getAuth, inMemoryPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth"

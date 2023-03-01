@@ -1,11 +1,14 @@
 {
   "name": "movies-surfer",
+  "homepage": "https://ammmarr.github.io/movies-surfer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +20,7 @@
     "axios": "^1.2.4",
     "firebase": "^9.17.1",
     "framer-motion": "^10.0.1",
+    "gh-pages": "^5.0.0",
     "js-circle-progress": "^0.2.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

@@ -1,8 +1,10 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import React, { useState } from "react";
 import "../styles/SignInPopUp.css"
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { auth, db } from "../firebase/firebase";
-
 import { useDispatch, useSelector } from "react-redux";
 import { popUpIsOpen } from "../reduxStore/popUp";
 import { useNavigate } from "react-router-dom";

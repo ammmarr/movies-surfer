@@ -6,11 +6,12 @@ import HeroSlider from '../components/HeroSlider';
 import Navbar from '../components/Navbar';
 import { auth, db } from '../firebase/firebase';
 import { setCurrentUserUserName } from '../reduxStore/currentUser';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 export default function Home() {
   const dispatch = useDispatch()
+  
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -18,7 +19,6 @@ export default function Home() {
         onValue(ref(db, `users/${auth.currentUser?.uid}/userInfo`), snapShot => {
           // setWatchLater([])
           const data = snapShot.val()
-          console.log('username', data.userName)
           if (data !== null) {
             dispatch(setCurrentUserUserName(data.userName))
           }
@@ -29,11 +29,14 @@ export default function Home() {
 
 
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.5,ease:'easeOut',delay:1}}>
+    <AnimatePresence initial={true}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5, ease: 'easeOut', delay: 1 }}
+        exit={{ opacity: 0, background: "yellow" }} key="asakldm">
 
-      <Navbar />
-      <HeroSlider />
-      <HeroMoviesByCategory />
-    </motion.div>
+        <Navbar />
+        <HeroSlider />
+        <HeroMoviesByCategory />
+      </motion.div>
+    </AnimatePresence>
   )
 }

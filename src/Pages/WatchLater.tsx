@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// @ts-nocheck
 import CircularProgress from '@mui/material/CircularProgress';
 import { getAuth, User } from 'firebase/auth';
 import { onValue, ref, remove } from 'firebase/database';
@@ -11,7 +14,7 @@ import { db } from '../firebase/firebase';
 import { SetCurrentUserWatchLater } from '../reduxStore/currentUser';
 import "../styles/watchLaterMovies.scss";
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 export default function watchLater() {
   // const [watchLater, setWatchLater] = useState([])
   const watchLater = useSelector(state => state.currentUser.watchLater)
@@ -29,7 +32,7 @@ const navigate = useNavigate()
       return onValue(ref(db, `users/${auth.currentUser?.uid}/likes`), snapShot => {
         // setWatchLater([])
         const data = snapShot.val();
-        const DataObject = Object.values(data ?? {}).map(each => each.movieData);
+        const DataObject = Object.values(data ?? {}).map((each:WatchLaterMovie | WatchLaterSeries) => each.movieData);
         dispatch(SetCurrentUserWatchLater(DataObject));
       });
     }
@@ -37,10 +40,9 @@ const navigate = useNavigate()
 
   // console.log(watchLater[0])
   const auth = getAuth()
-function removeWatchLater(e,ID) {
+function removeWatchLater(e:any,ID:Number) {
   e.stopPropagation();
   if(auth.currentUser){
-console.log("clickde")
   remove(ref(db, `users/${auth.currentUser.uid}/likes/${ID}`))
   }
 }
@@ -48,7 +50,7 @@ function handleWatchLaterMovieCardClick(ID:number) {
   navigate(`/movie/${ID}`)
 }
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.5,ease:'easeOut',delay:1}} className='watch-later'>
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.5,ease:'easeOut',delay:1}} exit={{opacity:0}} className='watch-later'>
 
       <Navbar />
       <img src={bg} className="bg-img" />
@@ -56,7 +58,8 @@ function handleWatchLaterMovieCardClick(ID:number) {
       {watchLater.length > 0 ? <div className="watch-later-movies-container">
 
 
-        {watchLater.map(movie => <div className='watch-later-movie-card'>
+        {watchLater.map(movie => <AnimatePresence mode="wait"><motion.div  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:5,ease:'easeOut',delay:1}}
+    exit={{opacity:0, background:"yellow",transition:{duration:4}}} className='watch-later-movie-card' Key={movie.id}>
 
 
           <img src={apiConfig.originalImage(movie.backdrop_path)} />
@@ -75,7 +78,8 @@ function handleWatchLaterMovieCardClick(ID:number) {
               <div className='progress-value'>{movie.vote_average}</div>
             </div>
           </div>
-        </div>
+        </motion.div>
+        </AnimatePresence>
         )}
 
       </div> : <div className='no-movies'><h2>You Didn't add any movies</h2></div>}

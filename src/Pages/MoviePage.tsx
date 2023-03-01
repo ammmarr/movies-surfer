@@ -28,7 +28,8 @@ export default function moviePage() {
 
   return (
 
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.5,ease:'easeOut',delay:1}}>
+    <motion.div  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.5,ease:'easeOut',delay:1}}
+    exit={{opacity:0,background:"yellow"}} key="asakldmas">
       <Navbar />
       {movieData ? <HeroMovieUi movieData={movieData} /> : null}
     </motion.div>
