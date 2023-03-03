@@ -14,6 +14,7 @@ import "../styles/navbar.scss"
 const Navbar = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const data = useSelector(state => state.apiData)
     const location = useLocation().pathname
     const openPopUp = () => {
         dispatch(popUpIsOpen(2))
@@ -31,7 +32,7 @@ if(auth.currentUser && userName !== ""){
    alert("Log In first")
 }
 }
-
+console.log(data)
     return (
         <nav className='nav-bar-container'>
             <div className="hamburger-menu">
@@ -58,7 +59,6 @@ if(auth.currentUser && userName !== ""){
                     <Link to="/movies" style={{ color: 'inherit', textDecoration: 'inherit' }}><li>Movies</li></Link>
                     <Link to="/series" style={{ color: 'inherit', textDecoration: 'inherit' }}><li>Series</li></Link>
                     <li onClick={()=> watchLaterClick()}>Watch later</li>
-                    <button onClick={() => dispatch(getRandomMoviesDataThunk())}>thunk</button>
 
                 </ul>
             </div>

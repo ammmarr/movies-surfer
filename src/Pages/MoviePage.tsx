@@ -13,7 +13,7 @@ export default function moviePage() {
   useEffect(() => {
     // declare the data fetching function
     const fetchData = async () => {
-      const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=801a00d82d2efc5cba24e10087c344d4&language=en-US`).then(res => res.json());
+      const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`).then(res => res.json());
 
       setMovieData(data)
     }
@@ -28,8 +28,8 @@ export default function moviePage() {
 
   return (
 
-    <motion.div  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.5,ease:'easeOut',delay:1}}
-    exit={{opacity:0,background:"yellow"}} key="asakldmas">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5, ease: 'easeOut', delay: 1 }}
+      exit={{ opacity: 0, background: "yellow" }} key="asakldmas">
       <Navbar />
       {movieData ? <HeroMovieUi movieData={movieData} /> : null}
     </motion.div>

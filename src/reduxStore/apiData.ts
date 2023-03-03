@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 
 export const getRandomMoviesDataThunk = createAsyncThunk('apiData/getRandomMoviesDataThunk', async () => {
   try {
-   const data =  await getData("https://api.themoviedb.org/3/discover/movie?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
+   const data =  await getData(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}`).then(res => res.results)
    
 
        return data
@@ -25,7 +25,7 @@ export const getRandomMoviesDataThunk = createAsyncThunk('apiData/getRandomMovie
 })
 export const getRandomSeriesDataThunk = createAsyncThunk('apiData/getRandomSeriesDataThunk', async () => {
   try {
-   const data =  await getData("https://api.themoviedb.org/3/discover/tv?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
+   const data =  await getData(`https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_API_KEY}`).then(res => res.results)
    
 
        return data
@@ -33,9 +33,9 @@ export const getRandomSeriesDataThunk = createAsyncThunk('apiData/getRandomSerie
    console.log(error);
   }
 })
-export const getPopularMoviesDataThunk = createAsyncThunk('apiData/getTopRatedMoviesDataThunk', async () => {
+export const getPopularMoviesDataThunk = createAsyncThunk('apiData/getPopularMoviesDataThunk', async () => {
   try {
-   const data =  await getData("https://api.themoviedb.org/3/movie/top_rated?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
+   const data =  await getData(`https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}`).then(res => res.results)
    
 
        return data
@@ -44,10 +44,9 @@ export const getPopularMoviesDataThunk = createAsyncThunk('apiData/getTopRatedMo
   }
 })
 
-export const getPopularSeriesDataThunk = createAsyncThunk('apiData/gettopRatedSeriesDataThunk', async () => {
+export const getPopularSeriesDataThunk = createAsyncThunk('apiData/getPopularSeriesDataThunk', async () => {
   try {
-   const data =  await getData("https://api.themoviedb.org/3/discover/movie?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
-   
+   const data =  await getData(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}`).then(res => res.results)
 
        return data
   } catch (error) {
@@ -55,9 +54,9 @@ export const getPopularSeriesDataThunk = createAsyncThunk('apiData/gettopRatedSe
   }
 })
 
-//   const   popularSeries = await getData("https://api.themoviedb.org/3/discover/tv?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
-// const  topRatedSeries = await getData("https://api.themoviedb.org/3/tv/top_rated?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
-// const  topRatedMovies = await getData("https://api.themoviedb.org/3/movie/top_rated?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
+//   const   popularSeries = await getData("https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
+// const  topRatedSeries = await getData("https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
+// const  topRatedMovies = await getData("https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
 
 
 
@@ -98,10 +97,10 @@ var initialData= {
   }
 }
 
-// // initialData.randomMovies = await getData("https://api.themoviedb.org/3/discover/movie?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
-// initialData.popularSeries = await getData("https://api.themoviedb.org/3/discover/tv?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
-// initialData.topRatedSeries = await getData("https://api.themoviedb.org/3/tv/top_rated?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
-// initialData.topRatedMovies = await getData("https://api.themoviedb.org/3/movie/top_rated?api_key=801a00d82d2efc5cba24e10087c344d4").then(res => res.results)
+// // initialData.randomMovies = await getData("https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
+// initialData.popularSeries = await getData("https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
+// initialData.topRatedSeries = await getData("https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
+// initialData.topRatedMovies = await getData("https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}").then(res => res.results)
 
 const moviesSlice = createSlice({
   name: "apiData",
@@ -116,29 +115,24 @@ const moviesSlice = createSlice({
   extraReducers: {
     [getRandomMoviesDataThunk.fulfilled]: (state,action) => {
       state.randomMovies= action.payload;
-      console.log(state.randomMovies)
-      console.log(action.payload,"action payload")
+  
     },
     [getRandomSeriesDataThunk.fulfilled]: (state,action) => {
       state.randomSeries= action.payload;
-      console.log(state.randomMovies)
-      console.log(action.payload,"action payload")
+  
     },
     [getPopularMoviesDataThunk.fulfilled]: (state,action) => {
-      state.popularMovies= action.payload;
-      console.log(state.randomMovies)
-      console.log(action.payload,"action payload")
+      state.topRatedMovies= action.payload;
+    
     },
     [getPopularSeriesDataThunk.fulfilled]: (state,action) => {
-      state.popularSeries= action.payload;
-      console.log(state.randomMovies)
-      console.log(action.payload,"action payload")
+      state.topRatedSeries= action.payload;
+    console.log(action.payload)
     },
 }})
 
 
 export const {deleteItem} = moviesSlice.actions
-console.log(moviesSlice)
 
 export default moviesSlice.reducer
 

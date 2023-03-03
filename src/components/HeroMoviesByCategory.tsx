@@ -8,7 +8,6 @@ const HeroMoviesByCategory = () => {
 
 
 
-
     return (
         <div className='categories'>
            
@@ -22,7 +21,7 @@ const HeroMoviesByCategory = () => {
             </div>
             <div className='catogory-container'>
                 <h2> Popular Series</h2>
-                 <CardsTrack data={data.popularSeries} />
+                 <CardsTrack data={data.randomSeries} />
             </div>
             <div className='catogory-container'>
                 <h2> Top Rated Series</h2>

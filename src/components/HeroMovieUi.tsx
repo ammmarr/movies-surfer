@@ -37,10 +37,10 @@ export default function HeroMovieUi(props: { movieData: { backdrop_path: string;
         const getData = async () => {
             try {
 
-                let fetchCastData = await axios(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=801a00d82d2efc5cba24e10087c344d4&language=en-US`)
-                let fetchTrailer = await axios(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=801a00d82d2efc5cba24e10087c344d4&language=en-US`)
+                let fetchCastData = await axios(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+                let fetchTrailer = await axios(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
                 let fetchRecommended = await axios(`
-                https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=801a00d82d2efc5cba24e10087c344d4&language=en-US&page=1`)
+                https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
                 const castResult = await fetchCastData.data
                 const trailerResult = await fetchTrailer.data
                 const recommendedResult = await fetchRecommended.data.results
@@ -120,7 +120,7 @@ export default function HeroMovieUi(props: { movieData: { backdrop_path: string;
                         <div className="cast-container">
                             {castData ? castData.cast.map((eachCastData: {
                                 id: Key | null | undefined; cast: any;
-                            }) => <CastCard castData={eachCastData}/>) : <CastError />}
+                            }) => <CastCard castData={eachCastData} />) : <CastError />}
                         </div>
                     </div>
                 </div>
