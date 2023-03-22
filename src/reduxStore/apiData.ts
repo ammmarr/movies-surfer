@@ -46,7 +46,7 @@ export const getPopularMoviesDataThunk = createAsyncThunk('apiData/getPopularMov
 
 export const getPopularSeriesDataThunk = createAsyncThunk('apiData/getPopularSeriesDataThunk', async () => {
   try {
-   const data =  await getData(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}`).then(res => res.results)
+   const data =  await getData(`https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}`).then(res => res.results)
 
        return data
   } catch (error) {
@@ -77,7 +77,7 @@ var initialData= {
   topRatedMovies: [],
   popularSeries: [],
   topRatedSeries: [],
-  test:[],
+  
 
 }
 
@@ -127,7 +127,6 @@ const moviesSlice = createSlice({
     },
     [getPopularSeriesDataThunk.fulfilled]: (state,action) => {
       state.topRatedSeries= action.payload;
-    console.log(action.payload)
     },
 }})
 

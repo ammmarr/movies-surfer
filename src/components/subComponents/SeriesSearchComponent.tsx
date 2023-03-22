@@ -1,26 +1,36 @@
 // @ts-nocheck
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignorenpm
-import * as React from 'react';
-import { useRef, useState } from 'react';
+import React from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import apiConfig from '../../api/MovieApi/apiConfig';
 import BGImage from "../../assets/theatre.jpg";
 import "../../styles/movieSearchComponent.scss";
-function MoviesSearchComponent() {
-    const initialSeries = useSelector((state: any) => state.apiData.popularSeries)
-    const [series, setSeries] = useState(initialSeries)
+function SeriesSearchComponent() {
+    const [series, setSeries] = useState([])
     const searchRef = useRef("")
     const [query, setQuery] = useState()
+    useEffect(() => {
+        const data = async (params: type) => {
+            const initialSeries = await useSelector((state: any) => state.apiData.topRatedSeries)
+            setSeries(initialSeries)
+
+        }
+        data()
+
+    }, [])
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const data = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&query=${searchRef.current.value}&page=1&include_adult=false`);
+        const data = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=801a00d82d2efc5cba24e10087c344d4&language=en-US&query=${searchRef.current.value}&page=1&include_adult=false`);
         // convert the data to json
         const json = await data.json();
 
         setSeries(json.results)
+        searchRef.current.value = ""
     }
     return (
         <div className="movie-search-component" >
@@ -35,7 +45,7 @@ function MoviesSearchComponent() {
                     {series.map((series: {
                         name: ReactNode; id: React.Key | null | undefined; backdrop_path: string; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; vote_average: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined;
                     }) =>
-                        <Link to={`/movie/${series.id}`} className="link-container">
+                        <Link to={`/movie/${series.id}`} className="link-container" key={series.id}>
                             <div key={series.id} className='movie-card-big'>
 
                                 {apiConfig.originalImage(series.backdrop_path) ? <img src={apiConfig.originalImage(series.backdrop_path)} /> : null}
@@ -60,4 +70,4 @@ function MoviesSearchComponent() {
     );
 }
 
-export default MoviesSearchComponent;
+export default SeriesSearchComponent;

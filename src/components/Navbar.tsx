@@ -32,7 +32,6 @@ if(auth.currentUser && userName !== ""){
    alert("Log In first")
 }
 }
-console.log(data)
     return (
         <nav className='nav-bar-container'>
             <div className="hamburger-menu">

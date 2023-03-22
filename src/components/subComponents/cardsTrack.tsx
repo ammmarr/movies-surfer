@@ -51,8 +51,8 @@ function handleRecommendedMoviesClick(id:number) {
           delay: 10000,
           disableOnInteraction: false,
         }}>
-        {props.data.map((item: { id: React.Key | null | undefined | number}) => <SwiperSlide key={item.id} onClick={() => handleRecommendedMoviesClick(item.id)}><MovieCard data={item} key={item.id} /></SwiperSlide>)
-        }
+      {props.data ? props.data.map((item: { id: React.Key | null | undefined | number}) => <SwiperSlide key={item.id} onClick={() => handleRecommendedMoviesClick(item.id)}><MovieCard data={item} key={item.id} /></SwiperSlide>)
+      : null}
       </Swiper>
     </div>
 

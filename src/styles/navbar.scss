@@ -76,6 +76,7 @@
     }
 
     .costum-button {
+      float: right;
         align-self: center;
         align-items: center;
         backdrop-filter: blur(10px);
@@ -134,7 +135,9 @@
 }
 //hamburger menu
 .hamburger-menu{
-    display: none;
+     display: none;
+    // position: absolute;
+    // right: 0;
 }
 #menu__toggle {
     opacity: 0;
@@ -180,6 +183,11 @@
     content: '';
     top: 8px;
   }
+  #menu-toggle{
+    position: absolute;
+    top: 1%;
+    left: 2%;
+  }
   .menu__box {
     display: block;
     position: fixed;
@@ -190,9 +198,10 @@
     margin: 0;
     padding: 80px 0;
     list-style: none;
-    background: linear-gradient(225deg,black,rgb(103, 33, 33));
+    background: linear-gradient(225deg,rgb(0, 0, 0),rgb(47, 1, 1));
     box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
     transition-duration: .25s;
+    
   }
   .menu__item {
     display: block;
@@ -225,4 +234,12 @@
     .hamburger-menu{
         display: block;
     }
+    }
+    @media  (max-width: 600px) {
+      .logo-container{
+        display: none !important;
+      }
+      .left-navbar-section{
+        display: none !important;
+      }
     }

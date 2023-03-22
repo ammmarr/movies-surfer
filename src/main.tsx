@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
 
     <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename="/movies-surfer">
         <AnimatePresence  mode={'wait'}>
           <App />
         </AnimatePresence>
